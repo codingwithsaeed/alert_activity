@@ -1,4 +1,0 @@
-#Sat Oct 15 09:58:58 IRST 2022
-base.0=/home/saeed/dev/workspace/flutter/alert_activity/example/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
