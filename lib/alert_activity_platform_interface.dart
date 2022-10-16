@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'alert_activity_method_channel.dart';
@@ -27,5 +28,6 @@ abstract class AlertActivityPlatform extends PlatformInterface {
     required String time,
     required String title,
     required String description,
+    required VoidCallback onClose,
   });
 }

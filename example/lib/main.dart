@@ -5,6 +5,10 @@ final alert = AlertActivity();
 
 void main() => runApp(const MyApp());
 
+void onClose() {
+  print("onClose");
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -15,14 +19,16 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: const Text('Flutter Alert Plugin')),
         body: Center(
           child: ElevatedButton(
-              onPressed: () {
-                alert.showActivity(
-                  time: '22:19',
-                  title: 'title',
-                  description: 'description',
-                );
-              },
-              child: const Text('Show Alert')),
+            onPressed: () {
+              alert.showActivity(
+                time: '22:19',
+                title: 'title',
+                description: 'description',
+                onClose: onClose,
+              );
+            },
+            child: const Text('Show Alert'),
+          ),
         ),
       ),
     );

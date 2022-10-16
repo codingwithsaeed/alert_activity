@@ -1,6 +1,6 @@
 # alert_activity
 
-A flutter plugin to show a activty even if device is locked
+A flutter plugin to show a activity even if device is locked
 
 ## Getting Started
 

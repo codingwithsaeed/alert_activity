@@ -1,5 +1,6 @@
 package ir.codingwithsaeed.alert_activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
@@ -10,7 +11,10 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 
 class AlertActivity : AppCompatActivity() {
+    private var callbackHandle: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         window.setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         val win: Window = window
         win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
@@ -29,13 +33,27 @@ class AlertActivity : AppCompatActivity() {
             val title = findViewById<TextView>(R.id.txt_title)
             title.text = intent.getStringExtra("title")
         }
-        if (intent.hasExtra("time")) {
+        if (intent.hasExtra("description")) {
             val desc = findViewById<TextView>(R.id.txt_desc)
-            desc.text = intent.getStringExtra("desc")
+            desc.text = intent.getStringExtra("description")
         }
 
+        callbackHandle = intent.getLongExtra("onCloseHandle", 0L)
         findViewById<MaterialButton>(R.id.btn_close).setOnClickListener {
+            sendNewBroadcast()
             finishAffinity()
         }
+    }
+
+    private fun sendNewBroadcast() {
+        val intent = Intent(CLOSE_ACTION).also {
+            it.putExtra("onCloseHandle", callbackHandle)
+        }
+        sendBroadcast(intent)
+    }
+
+    override fun onBackPressed() {
+        sendNewBroadcast()
+        super.onBackPressed()
     }
 }

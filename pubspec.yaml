@@ -1,6 +1,6 @@
 name: alert_activity
 description: A flutter plugin to show a activty even if device is locked
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/codingwithsaeed/alert_activity
 
 environment:
